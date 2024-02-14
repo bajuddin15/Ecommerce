@@ -36,11 +36,19 @@ const Header = () => {
             <div className="block lg:hidden">
               <Search size={20} color="gray" />
             </div>
-            <div>
-              <HeartIcon size={20} />
-            </div>
-            <div>
+            <Link to={"/wishlist"}>
+              <div className="relative cursor-pointer">
+                <HeartIcon size={20} />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white w-4 h-4 flex items-center justify-center rounded-full text-[10px]">
+                  4
+                </span>
+              </div>
+            </Link>
+            <div className="relative cursor-pointer">
               <ShoppingCartIcon size={20} />
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white w-4 h-4 flex items-center justify-center rounded-full text-[10px]">
+                1
+              </span>
             </div>
             <div className="block md:hidden">
               <Menu size={20} />

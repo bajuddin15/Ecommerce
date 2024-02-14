@@ -1,6 +1,7 @@
 import { Eye } from "lucide-react";
 import authImg from "../../assets/images/authImg.png";
 import google_logo from "../../assets/images/googleLogo.png";
+import { Link } from "react-router-dom";
 const SignUp = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -58,9 +59,11 @@ const SignUp = () => {
               />
               <span className="text-sm">Sign up with Google</span>
             </button>
-            <div className="text-sm flex items-center justify-center gap-4 my-2">
+            <div className="text-sm flex items-center justify-center gap-2 my-2">
               <span>Already have account?</span>
-              <span className="underline">Login</span>
+              <Link to={"/login"} className="underline text-blue-500">
+                Login
+              </Link>
             </div>
           </div>
         </form>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Eye, Heart } from "lucide-react";
 import cameraImg from "../../assets/images/camera.png";
 
@@ -11,7 +11,7 @@ const ProductCard = () => {
       onMouseEnter={() => setShowCartBtn(true)}
       onMouseLeave={() => setShowCartBtn(false)}
     >
-      <div className="bg-gray-200 h-60 p-10 md:p-14 relative">
+      <div className="bg-gray-200 h-60 p-10 md:p-14 relative rounded-sm">
         <img
           src={cameraImg}
           alt="camera-img"
@@ -25,8 +25,15 @@ const ProductCard = () => {
             <Eye size={16} />
           </div>
         </div>
+        {/* discound */}
+        <div className="absolute top-2 left-2 flex flex-col gap-2">
+          <span className="bg-red-500 text-white px-3 py-1 text-xs rounded-sm">
+            -35%
+          </span>
+        </div>
+
         <button
-          className={`absolute bottom-0 left-0 w-full py-2 text-center bg-black text-white text-sm ${
+          className={`absolute bottom-0 left-0 w-full py-2 text-center bg-black text-white text-sm rounded-bl-sm rounded-br-sm ${
             showCartBtn ? "block" : "hidden"
           }`}
         >
