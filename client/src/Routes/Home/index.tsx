@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ProductCategory from "../../Components/Categories/ProductCategory";
 import TitleWrapper from "../../Components/Organism/TitleWrapper";
 import ProductCard from "../../Components/Products/ProductCard";
@@ -21,9 +22,12 @@ const Home = () => {
           <ProductCard />
         </div>
         <div className="mt-10 flex items-center justify-center">
-          <button className="bg-red-500 text-white px-14 py-3 text-sm rounded-md">
+          <Link
+            to={"/products"}
+            className="bg-red-500 text-white px-14 py-3 text-sm rounded-md"
+          >
             View All Products
-          </button>
+          </Link>
         </div>
       </TitleWrapper>
       <TitleWrapper title="Our Products" subTitle="Explore Our Products">
@@ -38,9 +42,12 @@ const Home = () => {
           <ProductCard />
         </div>
         <div className="mt-10 flex items-center justify-center">
-          <button className="bg-red-500 text-white px-14 py-3 text-sm rounded-md">
+          <Link
+            to={"/products"}
+            className="bg-red-500 text-white px-14 py-3 text-sm rounded-md"
+          >
             View All Products
-          </button>
+          </Link>
         </div>
       </TitleWrapper>
 
