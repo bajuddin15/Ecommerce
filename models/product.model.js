@@ -33,11 +33,11 @@ const productSchema = new mongoose.Schema(
         type: String,
       },
     ],
-    category: {
+    categoryId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "ProductCategory",
     },
-    discount: {
+    discountId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "ProductDiscount",
     },
@@ -61,5 +61,5 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Product = new mongoose.model("Product", productSchema);
+const Product = mongoose.model("Product", productSchema);
 export default Product;

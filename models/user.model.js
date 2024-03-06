@@ -23,9 +23,23 @@ const userSchema = new mongoose.Schema(
       enum: ["admin", "user"],
       default: "user",
     },
+    address: {
+      address_line1: {
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      pinCode: {
+        type: String,
+      },
+      country: {
+        type: String,
+      },
+    },
   },
   { timestamps: true }
 );
 
-const User = new mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 export default User;
