@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 
 // all rouutes
 import authRoutes from "./routes/auth.route.js";
+import userRoutes from "./routes/user.route.js";
 import productRoutes from "./routes/product.route.js";
 
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 // all routes declarition
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 
 const PORT = process.env.PORT ?? 5000;
