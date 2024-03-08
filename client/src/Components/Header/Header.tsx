@@ -33,6 +33,7 @@ const Header = () => {
             <Search size={20} color="gray" />
           </div>
           <div className="flex items-center gap-8">
+            z
             <div className="block lg:hidden">
               <Search size={20} color="gray" />
             </div>
