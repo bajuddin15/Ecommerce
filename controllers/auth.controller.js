@@ -57,7 +57,7 @@ const signin = async (req, res) => {
 
     generateTokenAndSetCookie(userExist?._id, res);
 
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       message: "Signin successfully.",
       data: {
@@ -76,7 +76,7 @@ const signin = async (req, res) => {
 const logoutUser = (req, res) => {
   try {
     res.cookie("token", "", { maxAge: 0 });
-    res.status(200).json({ message: "Logout successfully" });
+    res.status(200).json({ success: true, message: "Logout successfully" });
   } catch (error) {
     console.log("Error in Logout controller", error.message);
     res.status(500).json({ success: false, message: "Internal Server Error" });

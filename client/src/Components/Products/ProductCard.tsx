@@ -1,9 +1,12 @@
-import { useState } from "react";
+import React from "react";
 import { Eye, Heart } from "lucide-react";
-import cameraImg from "../../assets/images/camera.png";
 
-const ProductCard = () => {
-  const [showCartBtn, setShowCartBtn] = useState<boolean>(false);
+interface IProps {
+  product: any;
+}
+
+const ProductCard: React.FC<IProps> = ({ product }) => {
+  const [showCartBtn, setShowCartBtn] = React.useState<boolean>(false);
 
   return (
     <div
@@ -13,7 +16,7 @@ const ProductCard = () => {
     >
       <div className="bg-gray-200 h-60 p-10 md:p-14 relative rounded-sm">
         <img
-          src={cameraImg}
+          src={product?.thumbnail_url}
           alt="camera-img"
           className="w-full h-full object-cover"
         />
@@ -42,9 +45,9 @@ const ProductCard = () => {
       </div>
       {/* product info */}
       <div className="flex flex-col gap-1">
-        <h4>CANON EOS DSLR Camera</h4>
+        <span>{product?.name}</span>
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-red-500">$100</span>
+          <span className="text-red-500">${product?.price}</span>
           <div className="rating rating-sm">
             <input
               type="radio"

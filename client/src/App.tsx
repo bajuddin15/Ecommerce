@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Login from "./Routes/Login";
@@ -11,15 +11,21 @@ import Wishlist from "./Routes/Wishlist";
 import Cart from "./Routes/Cart";
 import ProductDetails from "./Routes/ProductDetails";
 import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 const App = () => {
+  const user = useSelector((state: RootState) => state.auth.user);
   return (
-    <div>
+    <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/signup"
+          element={user ? <Navigate to="/" /> : <SignUp />}
+        />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
@@ -30,7 +36,7 @@ const App = () => {
       </Routes>
       <Footer />
       <Toaster position="top-right" reverseOrder={false} />
-    </div>
+    </BrowserRouter>
   );
 };
 

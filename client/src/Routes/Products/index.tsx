@@ -1,6 +1,9 @@
 import ProductCard from "../../Components/Products/ProductCard";
+import useData from "./data";
 
 const Products = () => {
+  const { state } = useData();
+  const { products } = state;
   return (
     <div className="container my-20">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
@@ -200,14 +203,13 @@ const Products = () => {
         {/* products */}
         <div className="col-span-3 p-5">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {products?.map((product) => {
+              return (
+                <>
+                  <ProductCard product={product} />
+                </>
+              );
+            })}
           </div>
         </div>
       </div>

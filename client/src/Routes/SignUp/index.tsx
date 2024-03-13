@@ -3,9 +3,11 @@ import { ZodSchema, z } from "zod";
 import { Eye } from "lucide-react";
 import authImg from "../../assets/images/authImg.png";
 import google_logo from "../../assets/images/googleLogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setSignup } from "@/store/slices/authSlice";
 
 interface FormData {
   name: string;
@@ -26,6 +28,8 @@ const schema: ZodSchema<FormData> = z.object({
 });
 
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formData, setFormData] = React.useState<FormData>(initialFormData);
   const [errors, setErrors] = React.useState<
     Partial<Record<keyof FormData, string>>
@@ -51,6 +55,8 @@ const SignUp = () => {
       // Handle form submission logic here
       const { data } = await axios.post("/api/auth/signup", formData);
       if (data && data?.success) {
+        dispatch(setSignup({ user: data?.data }));
+        navigate("/"); // if signup success then navigate to homepage
         toast.success(data?.message);
       }
       console.log("data--", data);
